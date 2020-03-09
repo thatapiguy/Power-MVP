@@ -11,7 +11,7 @@ During the import, for the MVP connector, choose the connection that you created
 3. After the import is complete, open the app in edit mode and go to the SettingsScreen to enter all your API keys.
 - MVP API key is required
 - YouTube and Twitter API are optional
-- For Wordpress blog, add the RSS feed for you blog (Limitation - only pulls recent posts and stats are not pulled).
+- For Wordpress blog, add the RSS feed URL for your blog (Limitation - only pulls recent posts and stats are not pulled).
 
 Please feel free to submit your feedback as an issue here.
 
