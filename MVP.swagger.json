@@ -1,0 +1,1664 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "MVP Production",
+    "version": "1.0",
+    "description": ""
+  },
+  "host": "mvpapi.azure-api.net",
+  "basePath": "/mvp",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/api/contributions/contributionareas": {
+      "get": {
+        "description": "Gets a list of Contribution areas grouped by Award Names",
+        "operationId": "GetContributionAreas",
+        "summary": "GetContributionAreas",
+        "responses": {
+          "200": {
+            "description": "IEnumerable ContributionAreaViewModel",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "AwardCategory": {
+                    "type": "string",
+                    "description": "AwardCategory"
+                  },
+                  "Contributions": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "AwardName": {
+                          "type": "string",
+                          "description": "AwardName"
+                        },
+                        "ContributionArea": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "Id": {
+                                "type": "string",
+                                "description": "Id"
+                              },
+                              "Name": {
+                                "type": "string",
+                                "description": "Name"
+                              },
+                              "AwardName": {
+                                "type": "string",
+                                "description": "AwardName"
+                              },
+                              "AwardCategory": {
+                                "type": "string",
+                                "description": "AwardCategory"
+                              },
+                              "Statuscode": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "Statuscode"
+                              },
+                              "Active": {
+                                "type": "boolean",
+                                "description": "Active"
+                              }
+                            }
+                          },
+                          "description": "ContributionArea"
+                        }
+                      }
+                    },
+                    "description": "Contributions"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "AwardCategory": {
+                    "type": "string",
+                    "description": "AwardCategory"
+                  },
+                  "Contributions": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "AwardName": {
+                          "type": "string",
+                          "description": "AwardName"
+                        },
+                        "ContributionArea": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "Id": {
+                                "type": "string",
+                                "description": "Id"
+                              },
+                              "Name": {
+                                "type": "string",
+                                "description": "Name"
+                              },
+                              "AwardName": {
+                                "type": "string",
+                                "description": "AwardName"
+                              },
+                              "AwardCategory": {
+                                "type": "string",
+                                "description": "AwardCategory"
+                              },
+                              "Statuscode": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "Statuscode"
+                              },
+                              "Active": {
+                                "type": "boolean",
+                                "description": "Active"
+                              }
+                            }
+                          },
+                          "description": "ContributionArea"
+                        }
+                      }
+                    },
+                    "description": "Contributions"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/api/contributions/{offset}/{limit}": {
+      "get": {
+        "description": "Supports pagination",
+        "operationId": "GetContributions",
+        "summary": "GetContributions",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. ContributionViewModel object",
+            "schema": {
+              "$ref": "#/definitions/ContributionViewModel"
+            }
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      }
+    },
+    "/api/contributions/{id}": {
+      "get": {
+        "description": "Gets a Contribution item by id",
+        "operationId": "GetContributionById",
+        "summary": "GetContributionById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Contribution object",
+            "schema": {
+              "$ref": "#/definitions/ContributionsModel"
+            }
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      }
+    },
+    "/api/contributions": {
+      "delete": {
+        "description": "Deletes a Contribution item",
+        "operationId": "DeleteContribution",
+        "summary": "DeleteContribution",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiContributionsDelete200ApplicationJsonResponse"
+            }
+          },
+          "204": {
+            "description": "NoContent"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      },
+      "post": {
+        "description": "Creates a new Contribution item",
+        "operationId": "PostContribution",
+        "summary": "PostContribution",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": "application/json"
+          },
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "contributionsModel",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ContributionsModel"
+            },
+            "description": "ContributionsModel object"
+          }
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiContributionsPost200ApplicationJsonResponse"
+            }
+          },
+          "201": {
+            "description": "Newly created ContributionsModel item",
+            "schema": {
+              "$ref": "#/definitions/ContributionsModel"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "500": {
+            "description": "InternalServerError"
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      },
+      "put": {
+        "description": "Updates a Contribution item",
+        "operationId": "PutContribution",
+        "summary": "PutContribution",
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "contributionsModel",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ContributionsModel"
+            },
+            "description": "ContributionsModel object"
+          }
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "InternalServerError"
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      }
+    },
+    "/api/onlineidentities": {
+      "get": {
+        "description": "Retricted to the current user",
+        "operationId": "GetOnlineIdentities",
+        "summary": "GetOnlineIdentities",
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. IEnumberable object.",
+            "schema": {
+              "$ref": "#/definitions/OnlineIdentityViewModelArray"
+            }
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      },
+      "delete": {
+        "description": "Delete Online Identity",
+        "operationId": "DeleteOnlineIdentity",
+        "summary": "DeleteOnlineIdentity",
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Format - int32. The items identity id (PrivateSiteId)",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiOnlineidentitiesDelete200ApplicationJsonResponse"
+            }
+          },
+          "204": {
+            "description": "NoContent"
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      },
+      "post": {
+        "description": "Keep PrivateSiteId == 0 and Retricted to the current user",
+        "operationId": "PostOnlineIdentity",
+        "summary": "PostOnlineIdentity",
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "onlineIdentityViewModel",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/OnlineIdentityViewModel"
+            },
+            "description": "OnlineIdentityViewModel object"
+          }
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiOnlineidentitiesPost200ApplicationJsonResponse"
+            }
+          },
+          "201": {
+            "description": "Newly created OnlineIdentity item",
+            "schema": {
+              "$ref": "#/definitions/OnlineIdentity"
+            }
+          },
+          "500": {
+            "description": "InternalServerError"
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      },
+      "put": {
+        "description": "Set PrivateSiteId in model to identity id",
+        "operationId": "PutOnlineIdentity",
+        "summary": "PutOnlineIdentity",
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "onlineIdentityViewModel",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/OnlineIdentityViewModel"
+            },
+            "description": "OnlineIdentityViewModel model"
+          }
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "InternalServerError"
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      }
+    },
+    "/api/onlineidentities/{nominationsId}": {
+      "get": {
+        "description": "Retricted to the current user",
+        "operationId": "GetOnlineIdentitiesByNominationsId",
+        "summary": "GetOnlineIdentitiesByNominationsId",
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "nominationsId",
+            "in": "path",
+            "description": "Format - uuid. Guid nominationsId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. IEnumberable object.",
+            "schema": {
+              "$ref": "#/definitions/OnlineIdentityViewModelArray"
+            }
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      }
+    },
+    "/api/profile": {
+      "get": {
+        "description": "Gets the current logged on user profile summary",
+        "operationId": "GetMVPProfile",
+        "summary": "GetMVPProfile",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProfileViewModel"
+            }
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": "e47bddd324e846d0b49bab119e8c2d5b"
+          }
+        ]
+      }
+    },
+    "/api/profile/{mvpid}": {
+      "get": {
+        "description": "Gets a users public profile",
+        "operationId": "GetMVPProfileById",
+        "summary": "GetMVPProfileById",
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "mvpid",
+            "in": "path",
+            "description": "Users mvpid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProfileViewModel"
+            }
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      }
+    },
+    "/api/profile/photo": {
+      "get": {
+        "description": "Gets the MVP Profile Image",
+        "operationId": "GetMVPProfileImage",
+        "summary": "GetMVPProfileImage",
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      }
+    },
+    "/api/contributions/contributiontypes": {
+      "get": {
+        "description": "Gets a list of Contribution Types",
+        "operationId": "GetContributionTypes",
+        "summary": "GetContributionTypes",
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. IOrderedEnumerable object.",
+            "schema": {
+              "$ref": "#/definitions/ContributionTypeModelArray"
+            }
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      }
+    },
+    "/api/contributions/sharingpreferences": {
+      "get": {
+        "description": "Gets a list of Sharing Preference / Visibility Types for Contributions",
+        "operationId": "GetSharingPreferences",
+        "summary": "GetSharingPreferences",
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. IEnumerable object.",
+            "schema": {
+              "$ref": "#/definitions/VisibilityViewModelArray"
+            }
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      }
+    },
+    "/api/awardconsideration/getcurrentquestions": {
+      "get": {
+        "description": "Gets the current award consideration question list for current award renewal cycle(with MVP's answer if it is in database)\n",
+        "operationId": "GetCurrentQuestions",
+        "summary": "GetCurrentQuestions",
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of Award consideration questions are received.",
+            "schema": {
+              "$ref": "#/definitions/AwardQuestionViewModelArray"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/api/awardconsideration/saveanswers": {
+      "post": {
+        "description": "Saves the MVP's answers for award consideration questions. ",
+        "operationId": "SaveAnswers",
+        "summary": "SaveAnswers",
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "awardAnswerViewModelArray",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/AwardAnswerViewModelArray"
+            },
+            "description": "List of award question models"
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "InternalServerError"
+          }
+        },
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ]
+      }
+    },
+    "/api/awardconsideration/GetAnswers": {
+      "get": {
+        "description": "Gets currently active award consideration question answers.",
+        "operationId": "GetAnswers",
+        "summary": "GetAnswers",
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. List of award consideration answers model.",
+            "schema": {
+              "$ref": "#/definitions/AwardAnswerViewModelArray"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/api/awardconsideration/SubmitAnswers": {
+      "post": {
+        "description": "Submits and finalizes the current answers for award consideration questions. Once submitted answers can't be changed anymore under current renewal cycle.",
+        "operationId": "SubmitAnswers",
+        "summary": "SubmitAnswers",
+        "parameters": [
+          {
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "VisibilityViewModel": {
+      "description": "The visibility.",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int32",
+          "description": "Gets or sets the id.",
+          "type": "integer"
+        },
+        "Description": {
+          "description": "Gets or sets the description.",
+          "type": "string"
+        },
+        "LocalizeKey": {
+          "type": "string"
+        }
+      }
+    },
+    "ContributionTypeModel": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "uuid",
+          "description": "Gets or sets the id.",
+          "type": "string"
+        },
+        "Name": {
+          "description": "Gets or sets the localized name.",
+          "type": "string"
+        },
+        "EnglishName": {
+          "description": "Gets or sets the english name",
+          "type": "string"
+        }
+      }
+    },
+    "ContributionViewModel": {
+      "type": "object",
+      "properties": {
+        "Contributions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ContributionsModel"
+          }
+        },
+        "TotalContributions": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PagingIndex": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "ContributionsModel": {
+      "type": "object",
+      "properties": {
+        "ContributionId": {
+          "format": "int32",
+          "description": "Gets or sets the Contribution table id.",
+          "type": "integer"
+        },
+        "ContributionTypeName": {
+          "description": "Name of the contribution type",
+          "type": "string"
+        },
+        "ContributionType": {
+          "$ref": "#/definitions/ContributionTypeModel",
+          "description": "Gets or sets the contribution type."
+        },
+        "ContributionTechnology": {
+          "$ref": "#/definitions/ContributionTechnologyModel",
+          "description": "Gets or sets the contribution technology."
+        },
+        "AdditionalTechnologies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ContributionTechnologyModel"
+          }
+        },
+        "StartDate": {
+          "format": "date-time",
+          "description": "Gets or sets the start date.",
+          "type": "string"
+        },
+        "Title": {
+          "description": "Gets or sets the title.",
+          "type": "string"
+        },
+        "ReferenceUrl": {
+          "description": "Gets or sets the url.",
+          "type": "string"
+        },
+        "Visibility": {
+          "$ref": "#/definitions/VisibilityViewModel",
+          "description": "Gets or sets the visibility."
+        },
+        "AnnualQuantity": {
+          "format": "int32",
+          "description": "Gets or sets the annual quantity.",
+          "type": "integer"
+        },
+        "SecondAnnualQuantity": {
+          "format": "int32",
+          "description": "Gets or sets the second annual quantity.",
+          "type": "integer"
+        },
+        "AnnualReach": {
+          "format": "int32",
+          "description": "Gets or sets the reach score.",
+          "type": "integer"
+        },
+        "Description": {
+          "description": "Gets or sets the description.",
+          "type": "string"
+        }
+      }
+    },
+    "ContributionTechnologyModel": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "uuid",
+          "description": "Gets or sets the id.",
+          "type": "string"
+        },
+        "Name": {
+          "description": "Gets or sets the name.",
+          "type": "string"
+        },
+        "AwardName": {
+          "type": "string"
+        },
+        "AwardCategory": {
+          "description": "Property to hold the Award Category value",
+          "type": "string"
+        }
+      }
+    },
+    "OnlineIdentityViewModel": {
+      "required": [
+        "SocialNetwork",
+        "Url"
+      ],
+      "type": "object",
+      "properties": {
+        "PrivateSiteId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "SocialNetwork": {
+          "$ref": "#/definitions/SocialNetworkViewModel"
+        },
+        "Url": {
+          "maxLength": 490,
+          "minLength": 0,
+          "pattern": "^((https?|ftp):\\/\\/)?(((([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-zA-Z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-zA-Z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-zA-Z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-zA-Z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-zA-Z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-zA-Z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$",
+          "type": "string"
+        },
+        "OnlineIdentityVisibility": {
+          "$ref": "#/definitions/VisibilityViewModel"
+        },
+        "ContributionCollected": {
+          "type": "boolean"
+        },
+        "DisplayName": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "UserId": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "MicrosoftAccount": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "PrivacyConsentStatus": {
+          "type": "boolean"
+        },
+        "PrivacyConsentCheckStatus": {
+          "type": "boolean"
+        },
+        "PrivacyConsentCheckDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "PrivacyConsentUnCheckDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Submitted": {
+          "type": "boolean"
+        }
+      }
+    },
+    "SocialNetworkViewModel": {
+      "required": [
+        "Id"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "IconUrl": {
+          "type": "string"
+        },
+        "SystemCollectionEnabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "OnlineIdentity": {
+      "type": "object",
+      "properties": {
+        "OnlineIdentityId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "MvpGuid": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "PrivateSiteId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OnlineIdentityVisibility": {
+          "$ref": "#/definitions/SharingPreference"
+        },
+        "SocialNetwork": {
+          "$ref": "#/definitions/SocialNetwork"
+        },
+        "Url": {
+          "type": "string"
+        },
+        "DisplayName": {
+          "type": "string"
+        },
+        "UserId": {
+          "type": "string"
+        },
+        "MicrosoftAccount": {
+          "type": "string"
+        },
+        "ContributionCollected": {
+          "type": "boolean"
+        },
+        "PrivacyConsentStatus": {
+          "type": "boolean"
+        },
+        "Submitted": {
+          "type": "boolean"
+        }
+      }
+    },
+    "SharingPreference": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Description": {
+          "type": "string"
+        }
+      }
+    },
+    "SocialNetwork": {
+      "type": "object",
+      "properties": {
+        "SocialNetworkId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Website": {
+          "type": "string"
+        },
+        "StatusCode": {
+          "$ref": "#/definitions/SocialNetworkStatusCode"
+        },
+        "SystemCollectionEnabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "SocialNetworkStatusCode": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Description": {
+          "type": "string"
+        }
+      }
+    },
+    "ProfileViewModel": {
+      "type": "object",
+      "properties": {
+        "Metadata": {
+          "$ref": "#/definitions/ContentMetadata"
+        },
+        "MvpId": {
+          "type": "string"
+        },
+        "YearsAsMvp": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "FirstAwardYear": {
+          "type": "string"
+        },
+        "AwardCategoryDisplay": {
+          "type": "string"
+        },
+        "TechnicalExpertise": {
+          "type": "string"
+        },
+        "InTheSpotlight": {
+          "type": "boolean"
+        },
+        "Headline": {
+          "type": "string"
+        },
+        "Biography": {
+          "type": "string"
+        },
+        "DisplayName": {
+          "type": "string"
+        },
+        "FullName": {
+          "type": "string"
+        },
+        "PrimaryEmailAddress": {
+          "type": "string"
+        },
+        "ShippingCountry": {
+          "type": "string"
+        },
+        "ShippingStateCity": {
+          "type": "string"
+        },
+        "Languages": {
+          "type": "string"
+        },
+        "OnlineIdentities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OnlineIdentityViewModel"
+          }
+        },
+        "Certifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CertificationViewModel"
+          }
+        },
+        "Activities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ActivityViewModel"
+          }
+        },
+        "CommunityAwards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AwardRecognitionViewModel"
+          }
+        },
+        "NewsHighlights": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MvpHighlightViewModel"
+          }
+        },
+        "UpcomingEvent": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MvpHighlightViewModel"
+          }
+        }
+      }
+    },
+    "ContentMetadata": {
+      "type": "object",
+      "properties": {
+        "PageTitle": {
+          "type": "string"
+        },
+        "TemplateName": {
+          "type": "string"
+        },
+        "Keywords": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        }
+      }
+    },
+    "CertificationViewModel": {
+      "description": "The account certification view model for edit.",
+      "type": "object",
+      "properties": {
+        "PrivateSiteId": {
+          "format": "int32",
+          "description": "Gets or sets the private site id.",
+          "type": "integer"
+        },
+        "Id": {
+          "format": "uuid",
+          "description": "Gets or sets the id.",
+          "type": "string"
+        },
+        "Title": {
+          "description": "Gets or sets the title.",
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "CertificationVisibility": {
+          "$ref": "#/definitions/VisibilityViewModel",
+          "description": "Gets or sets the certification visibility."
+        }
+      }
+    },
+    "ActivityViewModel": {
+      "description": "The activity view model.\r\nNote:\r\nThe logic of acticity is a little complicate.\r\nWhile edit activity, the ActivityType should be non-editable;\r\nWhile add activity, the dispalyname of AnnualQuantity/SecondAnnualQuantity/ReachScore should change with ActivityType changing,\r\nand validation rule is different while ActivityType change.\r\nFollowing is the logic details.\r\n<remarks>\r\nBook (Author):\r\n    [msft_title: required, 'Title']\r\n    [msft_startdate: required,'Start Date']\r\n    [msft_annualquantity: required, 'Books']\r\nBook (Co-Author): same as Book (Author)\r\nConference (booth presenter):\r\n    [msft_title: required, 'Title']\r\n    [msft_startdate: required,'Start Date']\r\n    [msft_annualquantity: required, 'Conferences']\r\nConference (organizer): same as Conference (booth presenter)\r\nSpeaking (Conference):\r\n    [msft_title: required, 'Title']\r\n    [msft_startdate: required,'Start Date']\r\n    [msft_annualquantity: required, 'Talks']\r\nSpeaking (Local):Same as Speaking (Conference)\r\nSpeaking (User group):Same as Speaking (Conference)\r\nForum Moderator:\r\n    [msft_title: required, 'Title']\r\n    [msft_startdate: required,'Start Date']\r\n    [msft_annualquantity: required, 'Threads Moderated']\r\nForum Participation (Microsoft Forums):\r\n    [msft_title: recommend, 'Title']\r\n    [msft_startdate: required,'Start Date']\r\n    [msft_url: required, 'Url']\r\n    [msft_annualquantity: required, 'Answers']\r\nForum Participation (3rd Party forums):\r\n    [msft_title: recommend, 'Title']\r\n    [msft_startdate: required,'Start Date']\r\n    [msft_url: required, 'Url']\r\n    [msft_annualquantity: required, 'Answers']\r\n    [msft_secondannualquantity: required, 'Posts']\r\n</remarks>",
+      "required": [
+        "ActivityType",
+        "ApplicableTechnology",
+        "DateOfActivity",
+        "TitleOfActivity"
+      ],
+      "type": "object",
+      "properties": {
+        "PrivateSiteId": {
+          "format": "int32",
+          "description": "Gets or sets the private site id.",
+          "type": "integer"
+        },
+        "ActivityType": {
+          "$ref": "#/definitions/ActivityTypeViewModel",
+          "description": "Gets or sets the contribution type."
+        },
+        "ApplicableTechnology": {
+          "$ref": "#/definitions/ActivityTechnologyViewModel",
+          "description": "Gets or sets the contribution technology."
+        },
+        "DateOfActivity": {
+          "format": "date-time",
+          "description": "Gets or sets the start date.",
+          "type": "string"
+        },
+        "DateOfActivityFormatted": {
+          "type": "string"
+        },
+        "EndDate": {
+          "format": "date-time",
+          "description": "End Date for system auto contribution",
+          "type": "string"
+        },
+        "EndDateFormatted": {
+          "type": "string"
+        },
+        "TitleOfActivity": {
+          "description": "Gets or sets the title.",
+          "type": "string"
+        },
+        "ReferenceUrl": {
+          "description": "Gets or sets the url.",
+          "pattern": "^((https?|ftp):\\/\\/)?(((([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-zA-Z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-zA-Z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-zA-Z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-zA-Z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-zA-Z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-zA-Z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$",
+          "type": "string"
+        },
+        "ActivityVisibility": {
+          "$ref": "#/definitions/VisibilityViewModel",
+          "description": "Gets or sets the visibility."
+        },
+        "AnnualQuantity": {
+          "format": "int32",
+          "description": "Gets or sets the annual quantity.",
+          "pattern": "^[0-9]*$",
+          "type": "integer"
+        },
+        "SecondAnnualQuantity": {
+          "format": "int32",
+          "description": "Gets or sets the second annual quantity.",
+          "pattern": "^[0-9]*$",
+          "type": "integer"
+        },
+        "AnnualReach": {
+          "format": "int32",
+          "description": "Gets or sets the reach score.",
+          "pattern": "^[0-9]*$",
+          "type": "integer"
+        },
+        "Description": {
+          "description": "Gets or sets the description.",
+          "type": "string"
+        },
+        "OnlineIdentity": {
+          "$ref": "#/definitions/OnlineIdentityViewModel",
+          "description": "Online identity by which this contribution was collected. Should be null if the contribution was not system collected"
+        },
+        "SocialNetwork": {
+          "$ref": "#/definitions/SocialNetworkViewModel",
+          "description": "Social network. Should be null or ignore for non system collected contribution"
+        },
+        "AllAnswersUrl": {
+          "description": "AllAnswersUrl",
+          "type": "string"
+        },
+        "AllPostsUrl": {
+          "description": "AllAnswersUrl",
+          "type": "string"
+        },
+        "IsSystemCollected": {
+          "description": "If this contribution is system collected",
+          "type": "boolean"
+        },
+        "IsBelongToLatestAwardCycle": {
+          "description": "If this contribution belongs to latest award cycle.",
+          "type": "boolean"
+        },
+        "DisplayMode": {
+          "type": "string"
+        },
+        "ChartColumnIndexes": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "DescriptionSummaryFormat": {
+          "type": "string"
+        },
+        "DataTableTitle": {
+          "type": "string"
+        },
+        "SubtitleHeader": {
+          "type": "string"
+        },
+        "IsAllowEdit": {
+          "type": "boolean"
+        },
+        "IsAllowDelete": {
+          "type": "boolean"
+        },
+        "IsFromBookmarklet": {
+          "description": "IsBookmarklet: If the call is initiated from bookmarklet",
+          "type": "boolean"
+        },
+        "Submitted": {
+          "type": "boolean"
+        }
+      }
+    },
+    "AwardRecognitionViewModel": {
+      "required": [
+        "Title",
+        "DateEarned"
+      ],
+      "type": "object",
+      "properties": {
+        "PrivateSiteId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Title": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "Description": {
+          "maxLength": 2000,
+          "minLength": 0,
+          "type": "string"
+        },
+        "DateEarned": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ReferenceUrl": {
+          "pattern": "^((https?|ftp):\\/\\/)?(((([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-zA-Z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-zA-Z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-zA-Z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-zA-Z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-zA-Z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-zA-Z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-zA-Z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-fA-F]{2})|[!\\$&amp;'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$",
+          "type": "string"
+        },
+        "AwardRecognitionVisibility": {
+          "$ref": "#/definitions/VisibilityViewModel"
+        }
+      }
+    },
+    "MvpHighlightViewModel": {
+      "type": "object",
+      "properties": {
+        "Title": {
+          "type": "string"
+        },
+        "Date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "DateFormatted": {
+          "type": "string"
+        },
+        "Url": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "Language": {
+          "type": "string"
+        }
+      }
+    },
+    "ActivityTypeViewModel": {
+      "description": "The activity type.",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "uuid",
+          "description": "Gets or sets the id.",
+          "type": "string"
+        },
+        "Name": {
+          "description": "Gets or sets the name.",
+          "type": "string"
+        },
+        "EnglishName": {
+          "description": "Gets or sets the english name",
+          "type": "string"
+        }
+      }
+    },
+    "ActivityTechnologyViewModel": {
+      "description": "The activity technology model.",
+      "required": [
+        "Id"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "uuid",
+          "description": "Gets or sets the id.",
+          "type": "string"
+        },
+        "Name": {
+          "description": "Gets or sets the name.",
+          "type": "string"
+        },
+        "AwardName": {
+          "type": "string"
+        },
+        "AwardCategory": {
+          "description": "Property to hold the Award Category value",
+          "type": "string"
+        },
+        "Statuscode": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "AwardQuestionViewModel": {
+      "type": "object",
+      "properties": {
+        "AwardQuestionId": {
+          "format": "uuid",
+          "description": "Gets or sets the key of the question",
+          "type": "string"
+        },
+        "QuestionContent": {
+          "description": "Gets or sets html description of the question",
+          "type": "string"
+        },
+        "Required": {
+          "description": "Gets or sets flag if award consideration question is required",
+          "type": "boolean"
+        }
+      }
+    },
+    "AwardAnswerViewModel": {
+      "type": "object",
+      "properties": {
+        "AwardQuestionId": {
+          "format": "uuid",
+          "description": "Gets or sets the key of the question",
+          "type": "string"
+        },
+        "Answer": {
+          "description": "Gets or sets answer for the given award question",
+          "type": "string"
+        }
+      }
+    },
+    "VisibilityViewModelArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/VisibilityViewModel"
+      }
+    },
+    "ContributionTypeModelArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ContributionTypeModel"
+      }
+    },
+    "AwardQuestionViewModelArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AwardQuestionViewModel"
+      }
+    },
+    "AwardAnswerViewModelArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AwardAnswerViewModel"
+      }
+    },
+    "ApiContributionsPost200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiContributionsPost200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiContributionsPost200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiContributionsPost200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiContributionsDelete200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiContributionsDelete200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiContributionsDelete200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiContributionsDelete200TextXmlResponse": {
+      "type": "object"
+    },
+    "OnlineIdentityViewModelArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/OnlineIdentityViewModel"
+      }
+    },
+    "ApiOnlineidentitiesPost200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiOnlineidentitiesPost200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiOnlineidentitiesPost200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiOnlineidentitiesPost200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiOnlineidentitiesDelete200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiOnlineidentitiesDelete200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiOnlineidentitiesDelete200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiOnlineidentitiesDelete200TextXmlResponse": {
+      "type": "object"
+    }
+  },
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "oauth2_auth": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://login.live.com/oauth20_authorize.srf",
+      "tokenUrl": "https://login.live.com/oauth20_token.srf",
+      "scopes": {
+        "wl.emails wl.basic wl.offline_access wl.signin": "wl.emails wl.basic wl.offline_access wl.signin"
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth2_auth": [
+        "wl.emails wl.basic wl.offline_access wl.signin"
+      ]
+    }
+  ],
+  "tags": []
+}
