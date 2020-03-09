@@ -18,3 +18,7 @@ Please feel free to submit your feedback as an issue here.
 Improvements planned -
 1. Pacakge the whole thing as a solution with CDS entity to archive all contribution data, thus having the option to update stats for all contributions with a click of a button.
 2. Wordpress API connection to get stats.
+
+Update as of 4:36 Pm Eastern Time on 3/9/2020
+1. Added twitter handle as an input to the flow. It will otherwise pull all my tweets instead of the user's tweets.
+2. removed Twitter connector as it wasn't required.
