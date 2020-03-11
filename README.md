@@ -3,13 +3,14 @@ A power app to manage your MVP Contributions easily.
 
 
 Installation steps in this order -
-1. First you need access to the MVP API. To get that, follow the instructions here - https://mvp.microsoft.com/en-us/Opportunities/my-opportunities-api-getting-started After you have completed the steps there, you should have these three things with you -
+1. First you need access to the MVP API. To get that, follow the instructions here - https://mvp.microsoft.com/en-us/Opportunities/my-opportunities-api-getting-started
+After you have completed the steps there, you should have these three things with you -
   a. MVP API Key
-  b. Azure App's Client Id
-  c. Azure App's Client Secret
+  b. Application Id
+  c. Application Secret
   You will need these in your custom connector.
   
-2. Import the MVP.swagger.json as a custom connector in Power Apps. Test the custom connector by logging into the microsoft account that you use for your MVP account. This will also create a connection that you can the use while importing the app.
+2. Import the MVP.swagger.json as a custom connector in Power Apps. Use the Application Id and Application Secret in the Client Id and Client secret respectively.  Test the custom connector by logging into the microsoft account that you use for your MVP account. This will create a connection that you can the use while importing the app.
 
 3. Import the PowerMVP_20200309132708.zip file in Power Apps using the import package feature.
 During the import, for the MVP connector, choose the connection that you created in step 1.
