@@ -605,8 +605,7 @@
             "name": "Ocp-Apim-Subscription-Key",
             "in": "header",
             "required": true,
-            "type": "string",
-            "default": "e47bddd324e846d0b49bab119e8c2d5b"
+            "type": "string"         
           }
         ]
       }
